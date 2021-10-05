@@ -354,7 +354,7 @@ function buildWorkletString(t, fun, closureVariables, name) {
 
 function processWorkletFunction(t, fun2, fileName) {
   const isObjectMethod = t.isObjectMethod(fun2.parentPath);
-  
+
   if (!t.isFunctionParent(fun2) && !isObjectMethod) {
     return;
   }
@@ -466,7 +466,9 @@ function processWorkletFunction(t, fun2, fileName) {
     transformed.ast,
     variables,
     functionName
-  ).replace("'worklet';", '');
+  )
+    .replace("{'worklet';", '{')
+    .replace('{"worklet";', '{');
   const workletHash = hash(funString);
 
   const loc = fun && fun.node && fun.node.loc && fun.node.loc.start;
