@@ -54,6 +54,7 @@ const globals = new Set([
   'Map',
   'Set',
   '_log',
+  '_executeMapper',
   '_updateProps',
   'RegExp',
   'Error',

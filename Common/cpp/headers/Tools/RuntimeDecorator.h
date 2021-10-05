@@ -26,14 +26,15 @@ typedef jsi::Runtime* RuntimePointer;
 
 class RuntimeDecorator {
 public:
-  static void decorateRuntime(jsi::Runtime &rt, const std::string &label);
+  static void decorateRuntime(jsi::Runtime &rt, const std::string &label, std::shared_ptr<MapperRegistry> mapperRegistry);
   static void decorateUIRuntime(jsi::Runtime &rt,
                                 const UpdaterFunction updater,
                                 const RequestFrameFunction requestFrame,
                                 const ScrollToFunction scrollTo,
                                 const MeasuringFunction measure,
                                 const TimeProviderFunction getCurrentTime,
-                                std::shared_ptr<LayoutAnimationsProxy> layoutAnimationsProxy);
+                                std::shared_ptr<LayoutAnimationsProxy> layoutAnimationsProxy,
+                                std::shared_ptr<MapperRegistry> mapperRegistry);
   
   /**
    Returns true if the given Runtime is the Reanimated UI-Thread Runtime.

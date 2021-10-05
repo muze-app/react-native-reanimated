@@ -1,4 +1,5 @@
-/* global _WORKLET _getCurrentTime _frameTimestamp _eventTimestamp, _setGlobalConsole */
+/* global _WORKLET _getCurrentTime _frameTimestamp _eventTimestamp,
+_setGlobalConsole, _executeMapper */
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import NativeReanimated from './NativeReanimated';
@@ -100,6 +101,13 @@ global._WORKLET = false;
 global._log = function (s) {
   console.log(s);
 };
+
+export function executeMappers(): void {
+  runOnUI(() => {
+    'worklet';
+    _executeMapper();
+  })();
+}
 
 export function runOnUI(worklet) {
   return makeShareable(worklet);

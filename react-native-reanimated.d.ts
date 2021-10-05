@@ -502,6 +502,8 @@ declare module 'react-native-reanimated' {
       fn: (...args: A) => R
     ): (...args: Parameters<typeof fn>) => void;
 
+    export function executeMappers(): void;
+
     type PropsAdapterFunction = (props: Record<string, unknown>) => void;
     export function createAnimatedPropAdapter(
       adapter: PropsAdapterFunction,
@@ -926,6 +928,7 @@ declare module 'react-native-reanimated' {
   export const timing: typeof Animated.timing;
   export const spring: typeof Animated.spring;
   export const SpringUtils: typeof Animated.SpringUtils;
+  export const executeMappers: typeof Animated.executeMappers;
   export const runOnUI: typeof Animated.runOnUI;
   export const runOnJS: typeof Animated.runOnJS;
   export const createAnimatedPropAdapter: typeof Animated.createAnimatedPropAdapter;
