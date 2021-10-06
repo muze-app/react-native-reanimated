@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <jsi/jsi.h>
 #include "LayoutAnimationsProxy.h"
+#include "MapperRegistry.h"
 
 using namespace facebook;
 
