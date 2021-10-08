@@ -397,7 +397,8 @@ function checkSharedValueUsage(
 export function useAnimatedStyle<T extends AnimatedStyle>(
   updater: BasicWorkletFunction<T>,
   dependencies?: DependencyList,
-  adapters?: AdapterWorkletFunction | AdapterWorkletFunction[]
+  adapters?: AdapterWorkletFunction | AdapterWorkletFunction[],
+  callback?: () => void
 ): AnimatedStyleResult {
   const viewsRef: ViewRefSet<any> = makeViewsRefSet();
   const viewDescriptors: ViewDescriptorsSet = makeViewDescriptorsSet();
@@ -504,6 +505,7 @@ export function useAnimatedStyle<T extends AnimatedStyle>(
           maybeViewRef,
           animationsActive
         );
+        callback?.();
       };
     }
     const mapperId = startMapper(
