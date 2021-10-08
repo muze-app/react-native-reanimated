@@ -444,7 +444,10 @@ const canApplyOptimalisation = (upadterFn) => {
   );
 };
 
-export function useAnimatedStyle(updater, dependencies, adapters) {
+export function useAnimatedStyle(updater, dependencies, adapters, callback) {
+  if (callback) {
+    updater.__optimalization = 0;
+  }
   const initRef = useRef(null);
   const viewsRef = makeViewsRefSet();
   const viewDescriptors = makeViewDescriptorsSet();
@@ -545,6 +548,7 @@ export function useAnimatedStyle(updater, dependencies, adapters) {
           maybeViewRef,
           animationsActive
         );
+        callback?.();
       };
     }
 
