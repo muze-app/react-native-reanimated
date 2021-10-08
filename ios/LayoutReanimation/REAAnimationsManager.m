@@ -265,6 +265,7 @@
 
 - (void)onViewUpdate:(UIView *)view before:(REASnapshot *)before after:(REASnapshot *)after
 {
+  _reaUiManager.flushUiOperations();
   NSNumber *tag = view.reactTag;
   NSMutableDictionary *targetValues = after.values;
   NSMutableDictionary *startValues = before.values;
